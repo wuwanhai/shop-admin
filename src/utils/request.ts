@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, {AxiosRequestConfig} from "axios";
 
 const request = axios.create({
     // url 前缀
@@ -25,4 +25,9 @@ request.interceptors.response.use(function (response) {
     return Promise.reject(error);
 });
 
-export default request
+// 输入 axios 的配置
+export default <T = any>(config: AxiosRequestConfig) => {
+    return request(config).then(res => {
+        return res.data.data as T
+    })
+}
