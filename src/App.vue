@@ -1,14 +1,15 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-import Nav from "./components/Nav.vue";
+// import HelloWorld from './components/HelloWorld.vue'
+// import Nav from "./components/Nav.vue";
 </script>
 
 <template>
+  <router-view />
 <!--  <img alt="Vue logo" src="./assets/logo.png" />-->
-  <Nav :obj="{name:'wanhai',age:11}"/>
-  <HelloWorld :obj="{name:'海涛',age:22}" msg="Hello Vue 3 + TypeScript + Vite" />
+<!--  <Nav :obj="{name:'wanhai',age:11}"/>-->
+<!--  <HelloWorld :obj="{name:'海涛',age:22}" msg="Hello Vue 3 + TypeScript + Vite" />-->
 </template>
 
 <style>
