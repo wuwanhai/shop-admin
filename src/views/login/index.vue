@@ -9,7 +9,7 @@ const msg = ref('我是登录')
 
 onMounted(() => {
   getLoginInfo().then(res=>{
-    console.log(res,'1111111111')
+    console.log(res.data.data.slide,'1111111111')
   })
 })
 
