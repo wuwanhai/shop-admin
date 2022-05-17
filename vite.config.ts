@@ -9,7 +9,14 @@ export default defineConfig({
       vue(),
       vueJsx({
   })],
-  resolve: {
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: `@import "@/styles/variable.scss";`
+            }
+        }
+        },
+    resolve: {
     alias: {
       '@': path.join(__dirname,'src')
     }
