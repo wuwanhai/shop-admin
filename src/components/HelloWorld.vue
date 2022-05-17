@@ -3,10 +3,12 @@
    <h2>{{props.msg}}</h2>
    <h3>{{props.obj.name}}</h3>
    <h3>{{props.obj.age}}</h3>
+   <Foot  msg="我是陈奕迅"/>
    <button @click="increment">click</button>
 </template>
-<script lang="ts" setup>
+<script lang="tsx" setup>
 import {PropType, ref} from "vue";
+import Foot from "./foot";
 
 // 接口类型
 
