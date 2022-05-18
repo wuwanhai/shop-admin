@@ -2,7 +2,7 @@ import axios, {AxiosRequestConfig} from "axios";
 
 const request = axios.create({
     // url 前缀
-    baseURL: 'http://localhost:8080/api'
+    baseURL: import.meta.env.VITE_API_BASEURL
 })
 
 // 请求拦截器，发起请求前
