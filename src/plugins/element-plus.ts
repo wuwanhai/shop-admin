@@ -6,6 +6,6 @@ import App from 'vue'
 export default {
     // @ts-ignore
     install (app: App) {
-        app.use(ElementPlus)
+        app.use(ElementPlus, {size: 'small'})
     }
 }
