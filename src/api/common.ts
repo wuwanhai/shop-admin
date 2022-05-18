@@ -27,7 +27,7 @@ import {IgetBlogInfo} from "@/api/tyeps/common";
 export const getBlogInfo = () => {
     return request<IgetBlogInfo> ({
         method:'GET',
-        url:'/blogs/2'
+        url:'/api/blogs/2'
     })
 }
 
