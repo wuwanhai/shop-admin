@@ -1,7 +1,9 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside width="200px">Aside</el-aside>
+      <el-aside width="auto">
+        <AppMenu />
+      </el-aside>
       <el-container>
         <el-header>Header</el-header>
         <el-main>
@@ -20,7 +22,7 @@
   .el-aside {
     display: flex;
     justify-content: center;
-    align-items: center;
+    //align-items: center;
   }
 
   .el-header,
@@ -43,5 +45,12 @@
 
     height: 150px;
   }
+  .el-container {
+    height: 100vh;
+  }
 }
 </style>
+<script setup lang="ts">
+import AppMenu from "./components/AppMenu.vue";
+
+</script>
