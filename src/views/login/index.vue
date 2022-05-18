@@ -1,5 +1,10 @@
 <template>
   <h1>{{msg}}</h1>
+  <el-date-picker
+      v-model="value2"
+      type="date"
+      placeholder="Pick a day"
+  />
   <el-button>Default</el-button>
 </template>
 <script setup lang="ts">
@@ -8,6 +13,7 @@ import {getBlogInfo} from '@/api/common'
 import type {IgetBlogInfo} from "@/api/tyeps/common";
 
 const msg = ref('我是登录')
+const value2 = ''
 
 // 用于限制定义的值
 const status = ref<IgetBlogInfo['status']>(200)
