@@ -1,13 +1,7 @@
 import request from "@/utils/request";
+import {IgetBlogInfo} from "@/api/tyeps/common";
 
-//  any 为泛型，也就是任意类型,
-//  T 用于接受自定义类型，也就是二次封装
-// interface ResponseData<T = any> {
-//     code: number,
-//     status: number,
-//     msg: string,
-//     data: T,
-// }
+
 
 // 请求方法
 // export const getLoginInfo = () => {
@@ -18,13 +12,22 @@ import request from "@/utils/request";
 //     }>>('./login/info')
 // }
 
-export const getLoginInfo = () => {
-    return request<{
-        login_square: String,
-        login_logo: String,
-        slide: String[]
-    }> ({
+// export const getLoginInfo = () => {
+//     return request<{
+//         login_square: String,
+//         login_logo: String,
+//         slide: String[]
+//     }> ({
+//         method:'GET',
+//         url:'/login/info'
+//     })
+// }
+
+// 本地接口
+export const getBlogInfo = () => {
+    return request<IgetBlogInfo> ({
         method:'GET',
-        url:'/login/info'
+        url:'/blogs/2'
     })
 }
+

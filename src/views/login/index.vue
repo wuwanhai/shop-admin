@@ -3,13 +3,21 @@
 </template>
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
-import {getLoginInfo} from '@/api/common'
+import {getBlogInfo} from '@/api/common'
+import {IgetBlogInfo} from "@/api/tyeps/common";
 
 const msg = ref('我是登录')
 
+// 用于限制定义的值
+const status = ref<IgetBlogInfo['status']>(200)
+
 onMounted(() => {
-  getLoginInfo().then(res=>{
-    console.log(res.data.data.slide,'1111111111')
+  getBlogInfo().then(res=>{
+    debugger
+    if (res.code === status) {
+
+    }
+    // console.log(res.data,'1111111111')
   })
 })
 
