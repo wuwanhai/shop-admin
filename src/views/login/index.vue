@@ -1,5 +1,6 @@
 <template>
   <h1>{{msg}}</h1>
+  <el-button>Default</el-button>
 </template>
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
