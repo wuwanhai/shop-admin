@@ -7,7 +7,7 @@
           default-active="2"
           text-color="#fff"
           :router="true"
-          :collapse="isCollapse"
+          :collapse="$store.state.isCollapse"
           @open="handleOpen"
           @close="handleClose"
       >
@@ -97,14 +97,9 @@
 
 <script lang="ts" setup>
 import {
-  Document,
   Menu as IconMenu,
-  Location,
-  Setting,
 } from '@element-plus/icons-vue'
 import {ref} from "vue";
-
-const isCollapse = ref(false)
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)

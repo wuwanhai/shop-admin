@@ -2,6 +2,7 @@
   <div class="common-layout">
     <el-container>
       <el-aside width="auto">
+<!--        左侧-->
         <AppMenu />
       </el-aside>
       <el-container>
