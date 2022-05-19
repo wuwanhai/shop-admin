@@ -7,12 +7,12 @@ const routes: RouteRecordRaw =
         component: () => RouterView,
         children:[
             {
-                path: 'order_list',
+                path: 'list',
                 name: 'order_list',
                 component: () => import('@/views/order/list/index.vue')
             },
             {
-                path: 'order_offline',
+                path: 'offline',
                 name: 'order_offline',
                 component: () => import('@/views/order/offline/index.vue')
             },

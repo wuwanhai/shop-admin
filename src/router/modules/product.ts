@@ -7,22 +7,22 @@ const routes: RouteRecordRaw = {
     component: () => RouterView,
     children:[
         {
-            path: 'product_attr',
+            path: 'attr',
             name: 'product_attr',
             component: () => import('@/views/product/attr/index.vue')
         },
         {
-            path: 'product_classify',
+            path: 'classify',
             name: 'product_classify',
             component: () => import('@/views/product/classify/index.vue')
         },
         {
-            path: 'product_reply',
+            path: 'reply',
             name: 'product_reply',
             component: () => import('@/views/product/reply/index.vue')
         },
         {
-            path: 'product_list',
+            path: 'list',
             name: 'product_list',
             component: () => import('@/views/product/list/index.vue')
         },

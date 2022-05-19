@@ -15,11 +15,11 @@
             <i class="el-icon-location"></i>
             <span>订单</span>
           </template>
-          <el-menu-item index="/order/order_list">
+          <el-menu-item index="/order/list">
             <el-icon><icon-menu /></el-icon>
             <span>列表</span>
           </el-menu-item>
-          <el-menu-item index="/order/order_offline">
+          <el-menu-item index="/order/offline">
             <el-icon><icon-menu /></el-icon>
             <span>结束订单</span>
           </el-menu-item>
@@ -30,7 +30,7 @@
             <i class="el-icon-location"></i>
             <span>媒体</span>
           </template>
-          <el-menu-item index="/permission/permission_role">
+          <el-menu-item index="/permission/role">
             <el-icon><icon-menu /></el-icon>
             <span>角色</span>
           </el-menu-item>
@@ -42,19 +42,19 @@
             <span>商品</span>
           </template>
 
-          <el-menu-item index="/product/product_attr">
+          <el-menu-item index="/product/attr">
             <el-icon><icon-menu /></el-icon>
             <span>商品规则</span>
           </el-menu-item>
-          <el-menu-item index="/product/product_classify">
+          <el-menu-item index="/product/classify">
             <el-icon><icon-menu /></el-icon>
             <span>商品类别</span>
           </el-menu-item>
-          <el-menu-item index="/product/product_list">
+          <el-menu-item index="/product/list">
             <el-icon><icon-menu /></el-icon>
             <span>商品列表</span>
           </el-menu-item>
-          <el-menu-item index="/product/product_reply">
+          <el-menu-item index="/product/reply">
             <el-icon><icon-menu /></el-icon>
             <span>商品评价</span>
           </el-menu-item>
@@ -67,15 +67,15 @@
             <i class="el-icon-location"></i>
             <span>权限</span>
           </template>
-          <el-menu-item index="/permission/permission_role">
+          <el-menu-item index="/permission/role">
             <el-icon><icon-menu /></el-icon>
             <span>角色</span>
           </el-menu-item>
-          <el-menu-item index="/permission/permission_admin">
+          <el-menu-item index="/permission/admin">
             <el-icon><icon-menu /></el-icon>
             <span>管理员</span>
           </el-menu-item>
-          <el-menu-item index="/permission/permission_rule">
+          <el-menu-item index="/permission/rule">
             <el-icon><icon-menu /></el-icon>
             <span>规则</span>
           </el-menu-item>

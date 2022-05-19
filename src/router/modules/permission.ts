@@ -6,17 +6,17 @@ const routes: RouteRecordRaw = {
     component: () => RouterView,
     children:[
         {
-            path: 'permission_admin',
+            path: 'admin',
             name: 'permission_admin',
             component: () => import('@/views/permission/admin/index.vue')
         },
         {
-            path: 'permission_rule',
+            path: 'rule',
             name: 'permission_rule',
             component: () => import('@/views/permission/rule/index.vue')
         },
         {
-            path: 'permission_role',
+            path: 'role',
             name: 'permission_role',
             component: () => import('@/views/permission/role/index.vue')
         },
