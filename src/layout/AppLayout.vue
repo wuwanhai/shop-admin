@@ -5,7 +5,10 @@
         <AppMenu />
       </el-aside>
       <el-container>
-        <el-header>Header</el-header>
+        <el-header>
+<!--            顶部-->
+           <AppHeader />
+        </el-header>
         <el-main>
 <!--          子路由-->
           <router-view></router-view>
@@ -21,15 +24,17 @@
   .el-main,
   .el-aside {
     display: flex;
-    justify-content: center;
+    //justify-content: center;
     //align-items: center;
   }
 
   .el-header,
   .el-footer {
-    background-color: var(--el-color-primary-light-7);
+    //justify-content: center;
+    align-items: center;
+    //background-color: var(--el-color-primary-light-7);
     color: var(--el-text-color-primary);
-    text-align: center;
+    //text-align: center;
   }
 
   .el-aside {
@@ -52,5 +57,6 @@
 </style>
 <script setup lang="ts">
 import AppMenu from "./components/AppMenu.vue";
+import AppHeader from "./AppHeader/index.vue";
 
 </script>

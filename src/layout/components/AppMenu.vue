@@ -7,15 +7,24 @@
           default-active="2"
           text-color="#fff"
           :router="true"
+          :collapse="isCollapse"
           @open="handleOpen"
           @close="handleClose"
       >
+        <el-menu-item index="/">
+          <el-icon><icon-menu /></el-icon>
+<!--           <i class="el-icon-menu" />-->
+           <template #title>
+             首页
+           </template>
+        </el-menu-item>
         <el-sub-menu index="/order" >
           <template #title>
             <i class="el-icon-location"></i>
             <span>订单</span>
           </template>
           <el-menu-item index="/order/list">
+
             <el-icon><icon-menu /></el-icon>
             <span>列表</span>
           </el-menu-item>
@@ -93,6 +102,10 @@ import {
   Location,
   Setting,
 } from '@element-plus/icons-vue'
+import {ref} from "vue";
+
+const isCollapse = ref(false)
+
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
