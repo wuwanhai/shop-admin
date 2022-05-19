@@ -1,5 +1,8 @@
 import {createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw} from 'vue-router'
 import AppLayout from '@/layout/AppLayout.vue'
+import product from "@/router/modules/product";
+import permission from "@/router/modules/permission";
+import order from "@/router/modules/order";
 
 // 配置路由器
 
@@ -15,8 +18,12 @@ const routes: RouteRecordRaw[] = [
                 name: 'home',
                 component: () => import('../views/home/index.vue')
             },
+            product,
+            permission,
+            order
         ]
     },
+    // login 是单独的页面，所以跳出去
     {
         path: '/login',
         name: 'login',
