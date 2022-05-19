@@ -1,5 +1,5 @@
 <template>
-
+   <h1>规则</h1>
 </template>
 
 <script>
