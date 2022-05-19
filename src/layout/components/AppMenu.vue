@@ -20,7 +20,7 @@
         </el-menu-item>
         <el-sub-menu index="/order" >
           <template #title>
-            <i class="el-icon-location"></i>
+            <el-icon><icon-menu /></el-icon>
             <span>订单</span>
           </template>
           <el-menu-item index="/order/list">
@@ -36,7 +36,7 @@
 
         <el-sub-menu index="/permission" >
           <template #title>
-            <i class="el-icon-location"></i>
+            <el-icon><icon-menu /></el-icon>
             <span>媒体</span>
           </template>
           <el-menu-item index="/permission/role">
@@ -47,7 +47,7 @@
 
         <el-sub-menu index="/product" >
           <template #title>
-            <i class="el-icon-location"></i>
+            <el-icon><icon-menu /></el-icon>
             <span>商品</span>
           </template>
 
@@ -73,7 +73,7 @@
 
         <el-sub-menu index="/permission" >
           <template #title>
-            <i class="el-icon-location"></i>
+            <el-icon><icon-menu /></el-icon>
             <span>权限</span>
           </template>
           <el-menu-item index="/permission/role">

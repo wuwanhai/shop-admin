@@ -1,16 +1,20 @@
 <template>
   <el-breadcrumb separator="/">
-    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-    <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
-    <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-    <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+    <el-breadcrumb-item v-for="item in routes" :to="{ path: item.path }" :key="item.path">{{item.meta.title}}</el-breadcrumb-item>
   </el-breadcrumb>
 </template>
 
-<script>
-export default {
-  name: "Breadcrumb"
-}
+<script setup lang="ts">
+   import {useRouter} from "vue-router";
+   import {computed} from "vue";
+
+   const router = useRouter()
+
+   const routes = computed(()=> {
+     // filter 过滤掉没值的
+     // router.currentRoute.value.matched 是当前路由的相关信息
+     return router.currentRoute.value.matched.filter(item => item.meta.title)
+   })
 </script>
 
 <style scoped>

@@ -1,4 +1,5 @@
 import {createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw} from 'vue-router'
+
 import AppLayout from '@/layout/AppLayout.vue'
 import product from "@/router/modules/product";
 import permission from "@/router/modules/permission";
@@ -16,7 +17,9 @@ const routes: RouteRecordRaw[] = [
             {
                 path: '/',
                 name: 'home',
-                component: () => import('../views/home/index.vue')
+                component: () => import('../views/home/index.vue'),
+                // 自定义元数据
+                meta:{title:'首页'}
             },
             product,
             permission,
