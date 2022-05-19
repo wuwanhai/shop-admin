@@ -20,6 +20,9 @@
 </template>
 <style lang="scss" scoped>
 .common-layout {
+  .el-header {
+    position: relative;
+  }
   .el-header,
   .el-footer,
   .el-main,

@@ -1,7 +1,11 @@
 <template>
-    <ToggleSidebar />
+   <ToggleSidebar/>
    <Breadcrumb />
-   <FullScreen />
+
+   <div class="r-side">
+     <FullScreen />
+   </div>
+
 </template>
 
 <script>
@@ -14,6 +18,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.r-side {
+   position: absolute;
+   right: 5%;
+}
 </style>

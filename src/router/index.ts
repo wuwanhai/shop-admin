@@ -4,6 +4,8 @@ import AppLayout from '@/layout/AppLayout.vue'
 import product from "@/router/modules/product";
 import permission from "@/router/modules/permission";
 import order from "@/router/modules/order";
+import nProgress from "nprogress";
+import 'nprogress/nprogress.css'
 
 // 配置路由器
 
@@ -37,6 +39,16 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
     history:createWebHashHistory(),
     routes // 路由规则
+})
+
+router.beforeEach(() => {
+    // 增加最上面的进度条
+   nProgress.start()
+})
+
+router.afterEach(() => {
+    // 路由加载完后消失
+    nProgress.done()
 })
 
 // 导出路由表
