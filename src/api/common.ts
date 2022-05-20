@@ -1,5 +1,5 @@
 import request from "@/utils/request";
-import {IgetBlogInfo} from "@/api/tyeps/common";
+import {IgetBlogInfo, ILoginResponseInfo} from "@/api/tyeps/common";
 
 
 
@@ -43,6 +43,19 @@ export const getCaptcha = () => {
         },
         // 响应类型  二进制
         responseType: 'blob'
+    })
+}
+
+// 登录接口
+export const login = (data:{
+    name: String,
+    password: String,
+    captcha: String
+}) => {
+    return request<ILoginResponseInfo>({
+        method:'POST',
+        url:'/api/login',
+        data
     })
 }
 

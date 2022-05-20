@@ -14,7 +14,7 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button type="primary" size="large" @click="submitForm(ruleFormRef)">登录</el-button>
+          <el-button type="primary" size="large" :loading="loading" @click="submitForm(ruleFormRef)">登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -22,12 +22,13 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import {onMounted, reactive, ref} from 'vue'
 import type {FormInstance, FormRules} from "element-plus";
-import {getCaptcha} from "@/api/common";
+import {getCaptcha, login} from "@/api/common";
+import {useRouter} from "vue-router";
 
 const ruleFormRef = ref<FormInstance>()
-
+const router = useRouter()
 const form = reactive({
   name: '132',
   password: '132456',
@@ -35,6 +36,8 @@ const form = reactive({
 })
 
 const captchaSrc = ref('')
+
+const loading = ref(false)
 
 // 规则
 const rules = reactive<FormRules>({
@@ -49,22 +52,34 @@ const rules = reactive<FormRules>({
   ],
 })
 
+// 加载完
+onMounted(() => {
+
+})
+
+
 const submitForm = async (formEl: FormInstance | undefined) => {
+
+  // 如果表单验证不通过，拒绝
   if (!formEl) return
+
   await formEl.validate((valid, fields) => {
     if (valid) {
-      console.log('submit!')
+      // 显示 loading
+      loading.value = true
+      // 登录
+      login(form).then(res=> {
+        // 不需要保持历史记录，所以rplace
+        router.replace({
+          name:'home'
+        })
+      })
+
     } else {
       console.log('error submit!', fields)
     }
   })
 }
-
-const resetForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return
-  formEl.resetFields()
-}
-
 // 获取验证码，需后端配合
 const loadCaptcha = async () => {
   const data = await getCaptcha()
