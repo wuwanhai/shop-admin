@@ -3,19 +3,18 @@
     <div class="main">
       <el-form :model="form" :rules="rules" ref="ruleFormRef">
         <h1>登录</h1>
-        <el-form-item>
-          <el-input v-model="form.name" prop="name"/>
+        <el-form-item prop="name" label="用户名">
+          <el-input v-model="form.name"/>
         </el-form-item>
-        <el-form-item >
-          <el-input v-model="form.password" prop="password"/>
+        <el-form-item prop="password" label="密码">
+          <el-input v-model="form.password" />
         </el-form-item>
-        <el-form-item >
-          <el-input v-model="form.captcha" prop="captcha"/>
+        <el-form-item prop="captcha" label="验证码">
+          <el-input v-model="form.captcha" />
         </el-form-item>
 
         <el-form-item>
-          <el-button type="primary" @click="submitForm(ruleFormRef)">登录</el-button>
-          <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
+          <el-button type="primary" size="large" @click="submitForm(ruleFormRef)">登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -25,13 +24,19 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import type {FormInstance, FormRules} from "element-plus";
+import {getCaptcha} from "@/api/common";
 
 const ruleFormRef = ref<FormInstance>()
+
 const form = reactive({
-  name: '',
-  password: '',
-  captcha: '',
+  name: '132',
+  password: '132456',
+  captcha: '132',
 })
+
+const captchaSrc = ref('')
+
+// 规则
 const rules = reactive<FormRules>({
    name:[
      { required: true, message: '请输入用户名', trigger: 'blur' },
@@ -42,8 +47,6 @@ const rules = reactive<FormRules>({
   captcha:[
     { required: true, message: '请输入用户名', trigger: 'blur' },
   ],
-
-
 })
 
 const submitForm = async (formEl: FormInstance | undefined) => {
@@ -61,28 +64,38 @@ const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.resetFields()
 }
+
+// 获取验证码，需后端配合
+const loadCaptcha = async () => {
+  const data = await getCaptcha()
+  // 将图片数据转化成 src
+  captchaSrc.value = URL.createObjectURL(data)
+}
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 .bkg {
    width: 100%;
    height: 100vh;
    background: #2c3e50;
    position: fixed;
   top: 0;
+  .main {
+    width: 500px;
+    text-align: center;
+    height: 40vh;
+    background: white;
+    border: 1px solid black;
+    padding: 0.5% 3%;
+    border-radius: 1rem;
+    margin: 10% auto;
+    .el-form-item__content {
+      justify-content: center;
+    }
+    h1 {
+      margin: 20% 0 10% 0;
+    }
+  }
 
 }
-   .main {
-      width: 500px;
-     text-align: center;
-     height: 40vh;
-     background: white;
-     border: 1px solid black;
-     padding: 0.5% 3%;
-     border-radius: 1rem;
-     margin: 10% auto;
-     h1 {
-       margin: 5% 0;
-     }
-   }
 </style>
 0

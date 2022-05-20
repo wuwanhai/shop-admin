@@ -31,3 +31,18 @@ export const getBlogInfo = () => {
     })
 }
 
+// 获取验证码
+
+export const getCaptcha = () => {
+    return request <Blob>({
+        method: "GET",
+        url:'/captcha_pro',
+        params: {
+            // 时间戳，确保每次请求相同接口，存在缓存的问题
+            stamp: Date.now()
+        },
+        // 响应类型  二进制
+        responseType: 'blob'
+    })
+}
+
