@@ -23,9 +23,10 @@
 
 <script lang="ts" setup>
 import {onMounted, reactive, ref} from 'vue'
-import type {FormInstance, FormRules} from "element-plus";
+import type {FormInstance, FormItemRule, FormRules} from "element-plus";
 import {getCaptcha, login} from "@/api/common";
 import {useRouter} from "vue-router";
+import {IFormRule} from "@/types/element-plus";
 
 const ruleFormRef = ref<FormInstance>()
 const router = useRouter()
@@ -40,7 +41,8 @@ const captchaSrc = ref('')
 const loading = ref(false)
 
 // 规则
-const rules = reactive<FormRules>({
+// TS 提示规则
+const rules = ref<IFormRule>({
    name:[
      { required: true, message: '请输入用户名', trigger: 'blur' },
    ],
@@ -74,6 +76,10 @@ const submitForm = async (formEl: FormInstance | undefined) => {
           name:'home'
         })
       })
+          .finally(() =>{
+            // 执行结束后，处理 loading
+            loading.value = false
+          })
 
     } else {
       console.log('error submit!', fields)

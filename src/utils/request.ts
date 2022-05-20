@@ -1,4 +1,5 @@
 import axios, {AxiosRequestConfig} from "axios";
+import {ElMessage} from "element-plus";
 
 const request = axios.create({
     // url 前缀
@@ -16,8 +17,12 @@ request.interceptors.request.use(function (config) {
 
 // 响应拦截器
 request.interceptors.response.use(function (response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
+    // 统一处理接口的相关错误
+    if (response.data.code && response.data.code !== 200) {
+        ElMessage.error(response.data.msg || '请联系管理员')
+        // 如果为异常，阻止接下来的动作,抛出异常
+        return Promise.reject(response.data)
+    }
     return response;
 }, function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
