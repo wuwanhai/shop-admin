@@ -27,7 +27,9 @@ import type {FormInstance, FormItemRule, FormRules} from "element-plus";
 import {getCaptcha, login} from "@/api/common";
 import {useRouter} from "vue-router";
 import {IFormRule} from "@/types/element-plus";
+import {useStore} from "@/store";
 
+const store = useStore()
 const ruleFormRef = ref<FormInstance>()
 const router = useRouter()
 const form = reactive({
@@ -71,6 +73,11 @@ const submitForm = async (formEl: FormInstance | undefined) => {
       loading.value = true
       // 登录
       login(form).then(res=> {
+        // console.log(store.state.count)
+        // debugger
+        store.commit('setUser',res.user_info)
+
+
         // 不需要保持历史记录，所以rplace
         router.replace({
           name:'home'

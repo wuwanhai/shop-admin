@@ -33,6 +33,6 @@ request.interceptors.response.use(function (response) {
 // 输入 axios 的配置
 export default <T = any>(config: AxiosRequestConfig) => {
     return request(config).then(res => {
-        return res.data as T
+        return res.data.data as T
     })
 }

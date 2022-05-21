@@ -1,11 +1,13 @@
 import { createStore, Store,useStore as baseUseStore} from "vuex";
 import {InjectionKey} from "vue";
+import {IUserInfo} from "@/api/tyeps/common";
 
 
 // state 数据
 const state = {
     count: 0,
-    isCollapse: true
+    isCollapse: false,
+    user: null as IUserInfo | null
 }
 
 //  state 的接口类型
@@ -29,6 +31,10 @@ export const store = createStore<State>({
         // 传参
         setIsCollapse(state, payload) {
             state.isCollapse = payload
+        },
+        // 设置用户信息
+        setUser(state, payload) {
+            state.user = payload
         }
     }
 })
