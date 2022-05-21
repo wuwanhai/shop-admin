@@ -23,6 +23,7 @@ export interface IMenu {
 // 用户信息
 
  export interface IUserInfo {
+     token: string;
      id: number,
      account: string,
      head_pic: string,

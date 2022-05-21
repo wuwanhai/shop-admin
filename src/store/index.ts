@@ -9,7 +9,8 @@ import {USER} from "@/utils/constants";
 const state = {
     count: 0,
     isCollapse: false,
-    user: getItem<IUserInfo>(USER) as IUserInfo | null
+    // 追加 字面量 token
+    user: getItem<{token: string} & IUserInfo>(USER) as IUserInfo | null
 }
 
 //  state 的接口类型

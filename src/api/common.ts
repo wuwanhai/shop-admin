@@ -31,6 +31,7 @@ export const getBlogInfo = () => {
     })
 }
 
+
 // 获取验证码
 
 export const getCaptcha = () => {
@@ -58,4 +59,13 @@ export const login = (data:{
         data
     })
 }
+
+export const logout = () => {
+    return request<IgetBlogInfo> ({
+        method:'GET',
+        url:'/api/blogs/2'
+    })
+}
+
+
 

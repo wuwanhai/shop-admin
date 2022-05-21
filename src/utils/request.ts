@@ -1,14 +1,21 @@
 import axios, {AxiosRequestConfig} from "axios";
 import {ElMessage} from "element-plus";
+import {store} from "@/store";
 
 const request = axios.create({
-    // url 前缀
+    // url 前缀，如果不需要代理，则开启
     // baseURL: import.meta.env.VITE_API_BASEURL
 })
 
 // 请求拦截器，发起请求前
 request.interceptors.request.use(function (config) {
     // Do something before request is sent
+    // 统一设置用户身份 token
+    const user = store.state.user
+    if (user && user.token) {
+        // @ts-ignore
+        config.headers.Authorization = `Bearer ${user.token}`
+    }
     return config;
 }, function (error) {
     // Do something with request error

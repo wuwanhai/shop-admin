@@ -19,6 +19,8 @@
 import { ArrowDown } from '@element-plus/icons-vue'
 import {ElMessage, ElMessageBox} from "element-plus";
 import {useRouter} from "vue-router";
+import {logout} from "@/api/common";
+import {store} from "@/store";
 
 const router = useRouter()
 const logoutHandle = () => {
@@ -33,14 +35,19 @@ const logoutHandle = () => {
   )
       .then(async () => {
 
-        // 退出
-        await router.push({
-          name: 'login'
-        })
+        // 调用退出接口
+        await logout()
 
         await ElMessage({
           type: 'success',
           message: '退出成功',
+        })
+
+        store.commit('setUser',null)
+
+        // 退出
+        await router.push({
+          name: 'login'
         })
       })
       .catch(() => {

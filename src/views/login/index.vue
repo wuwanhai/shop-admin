@@ -75,9 +75,10 @@ const submitForm = async (formEl: FormInstance | undefined) => {
       login(form).then(res=> {
         // console.log(store.state.count)
         // debugger
-        store.commit('setUser',res.user_info)
-
-
+        store.commit('setUser',{
+          // 合并 token 对象
+          ...res.user_info,token:res.token
+        })
         // 不需要保持历史记录，所以rplace
         router.replace({
           name:'home'
