@@ -25,13 +25,14 @@
 import {onMounted, reactive, ref} from 'vue'
 import type {FormInstance, FormItemRule, FormRules} from "element-plus";
 import {getCaptcha, login} from "@/api/common";
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {IFormRule} from "@/types/element-plus";
 import {useStore} from "@/store";
 
 const store = useStore()
 const ruleFormRef = ref<FormInstance>()
 const router = useRouter()
+const route = useRoute()
 const form = reactive({
   name: '132',
   password: '132456',
@@ -79,10 +80,14 @@ const submitForm = async (formEl: FormInstance | undefined) => {
           // 合并 token 对象
           ...res.user_info,token:res.token
         })
-        // 不需要保持历史记录，所以rplace
-        router.replace({
-          name:'home'
-        })
+
+        let redirect = route.query.redirect || '/'
+        // 容错处理
+        if (typeof redirect !== 'string') {
+          redirect = '/'
+        }
+        router.replace(redirect)
+
       })
           .finally(() =>{
             // 执行结束后，处理 loading
