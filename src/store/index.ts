@@ -7,7 +7,7 @@ import {IUserInfo} from "@/api/tyeps/common";
 const state = {
     count: 0,
     isCollapse: false,
-    user: null as IUserInfo | null
+    user: JSON.parse(window.localStorage.getItem('user') || 'null') as IUserInfo | null
 }
 
 //  state 的接口类型
@@ -35,6 +35,8 @@ export const store = createStore<State>({
         // 设置用户信息
         setUser(state, payload) {
             state.user = payload
+            // 数据持久化
+            window.localStorage.setItem('user',JSON.stringify(state.user))
         }
     }
 })
