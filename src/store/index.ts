@@ -1,13 +1,15 @@
 import { createStore, Store,useStore as baseUseStore} from "vuex";
 import {InjectionKey} from "vue";
 import {IUserInfo} from "@/api/tyeps/common";
+import {getItem, setItem} from "@/utils/storage";
+import {USER} from "@/utils/constants";
 
 
 // state 数据
 const state = {
     count: 0,
     isCollapse: false,
-    user: JSON.parse(window.localStorage.getItem('user') || 'null') as IUserInfo | null
+    user: getItem<IUserInfo>(USER) as IUserInfo | null
 }
 
 //  state 的接口类型
@@ -36,7 +38,7 @@ export const store = createStore<State>({
         setUser(state, payload) {
             state.user = payload
             // 数据持久化
-            window.localStorage.setItem('user',JSON.stringify(state.user))
+            setItem(USER, state.user)
         }
     }
 })
