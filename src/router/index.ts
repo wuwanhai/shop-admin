@@ -53,7 +53,7 @@ router.beforeEach((to, from) => {
     // to.matched.some(record => record.meta.requiresAuth)
     debugger
 
-    if (to.meta.requireAuth && store.state.user) {
+    if (to.meta.requireAuth && JSON.stringify(store.state.user) === 'null') {
         // 此路由需要授权，请检查是否已登录
         // 如果没有，则重定向到登录页面
         return {
