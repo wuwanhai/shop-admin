@@ -31,17 +31,12 @@
       </el-table>
     </div>
     <div class="footer">
-      <el-pagination
-          v-model:currentPage="listParams.page"
-          v-model:page-size="listParams.limit"
-          :page-sizes="[5, 10, 15, 20]"
-          small="small"
-          :disabled="disabled"
+      <AppPagination
+          v-model:page="listParams.page"
+          v-model:limit="listParams.limit"
+          :list-count="listCount"
+          :load-list='loadList'
           background
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="listCount"
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
       />
     </div>
   </div>
@@ -52,6 +47,7 @@
 import {onMounted, reactive, ref} from "vue";
    import {getAdmins} from "@/api/admin";
    import type {Admin, IListParams} from "@/api/tyeps/admin";
+   import AppPagination from '@/components/pagination/index.vue'
 
    const listParams = reactive({
      page: 1,
@@ -82,16 +78,6 @@ import {onMounted, reactive, ref} from "vue";
       await loadList()
    }
 
-   const handleSizeChange = (size: number) => {
-      listParams.limit = size
-      listParams.page = 1
-      loadList()
-   }
-   const handleCurrentChange = (page: number) => {
-      listParams.page = page
-     debugger
-     loadList()
-   }
 </script>
 
 <style scoped lang="scss">
