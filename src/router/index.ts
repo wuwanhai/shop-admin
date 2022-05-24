@@ -51,7 +51,6 @@ router.beforeEach((to, from) => {
 
     // 而不是去检查每条路由记录
     // to.matched.some(record => record.meta.requiresAuth)
-    debugger
 
     if (to.meta.requireAuth && JSON.stringify(store.state.user) === 'null') {
         // 此路由需要授权，请检查是否已登录
