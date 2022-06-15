@@ -2,10 +2,11 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 // @ts-ignore
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import * as path from "path";
+import * as path from 'path'
 
 export default defineConfig({
     server: {
+        host: true,
         proxy: {
             // 字符串简写写法
             // '/foo': 'http://localhost:4567',
@@ -27,7 +28,7 @@ export default defineConfig({
                 target: 'http://localhost:8080',
                 changeOrigin: true,
                 // configure: (proxy, options) => {
-                    // proxy 是 'http-proxy' 的实例
+                // proxy 是 'http-proxy' 的实例
                 // }
             },
             // Proxying websockets or socket.io
@@ -35,22 +36,19 @@ export default defineConfig({
             //     target: 'ws://localhost:3000',
             //     ws: true
             // }
-        }
+        },
     },
-  plugins: [
-      vue(),
-      vueJsx({
-  })],
+    plugins: [vue(), vueJsx({})],
     css: {
         preprocessorOptions: {
             scss: {
-                additionalData: `@import "@/styles/variable.scss";`
-            }
-        }
+                additionalData: `@import "@/styles/variable.scss";`,
+            },
         },
+    },
     resolve: {
-    alias: {
-      '@': path.join(__dirname,'src')
-    }
-  }
+        alias: {
+            '@': path.join(__dirname, 'src'),
+        },
+    },
 })
